@@ -1,0 +1,121 @@
+{
+    "_version": "1.50.0",
+    "sap.app": {
+        "id": "emc2.hr.payroll",
+        "type": "application",
+        "_version": "1.18.0",
+        "ach": "FIN-ACC-AP",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "dataSources": {
+            "anubhavService":{
+                "uri": "/sap/opu/odata/sap/ZJUN_ODATA_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0"
+                }
+            }
+        },
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}"
+    },
+    "sap.ui": {
+        "deviceTypes":{
+            "desktop": true,
+            "phone": true,
+            "tablet": true
+        },
+        "fullWidth": true,
+        "supportedThemes": ["sap_fiori_3_dark","sap_horizon"],
+        "technology": "UI5",
+        "icons": {}
+    },
+    "sap.ui5": {
+        "dependencies": {
+            "minUI5Version": "1.110.0",
+            "libs": {
+                "sap.ui.core": {"minVersion": "1.110.0"},
+                "sap.m": {"minVersion": "1.110.0"},
+                "sap.ui.layout": {"minVersion": "1.110.0"}
+            }
+        },
+        "contentDensities": {"cozy": true,"compact": true},
+        "rootView":{
+            "viewName": "emc2.hr.payroll.view.App",
+            "type": "XML",
+            "id": "idRootView"
+        },
+        "routing": {
+            "config":{
+                "routerClass": "sap.m.routing.Router",
+                "viewPath": "emc2.hr.payroll.view",
+                "viewType": "XML",
+                "controlId": "idAppCon"
+            },
+            "routes": [{
+                "name": "spiderman",
+                "pattern": "",
+                "target": ["narendra","modi"]
+            },{
+                "name": "superman",
+                "pattern": "fruits/{devyani}",
+                "target": ["narendra","putin"]
+            },{
+                "name": "supplier",
+                "pattern": "supplier/{supplierId}",
+                "target": ["narendra","biden"]
+            },{
+                "name": "add",
+                "pattern": "manageProduct",
+                "target": ["narendra","macron"]
+            }],
+            "targets": {
+                "narendra":{
+                    "viewName": "View1",
+                    "controlAggregation": "masterPages",
+                    "viewId": "idView1"
+                },
+                "modi": {
+                    "viewName": "Empty",
+                    "controlAggregation": "detailPages",
+                    "viewId": "idEmpty"
+                },
+                "putin":{
+                    "viewName": "View2",
+                    "controlAggregation": "detailPages",
+                    "viewId": "idView2"
+                },
+                "biden":{
+                    "viewName": "SupplierDetail",
+                    "controlAggregation": "detailPages",
+                    "viewId": "idSupplier"
+                },
+                "macron":{
+                    "viewName": "Add",
+                    "controlAggregation": "detailPages",
+                    "viewId": "idAdd"
+                }
+            }
+        },
+        "models": {
+            "":{
+                "dataSource": "anubhavService",
+                "preload": true,
+                "settings": {}
+            },
+            "fruit": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/fruits.json",
+                "settings": {}
+            },
+            "i18n":{
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleUrl": "i18n/i18n.properties"
+                }
+            }
+        }
+    }
+}

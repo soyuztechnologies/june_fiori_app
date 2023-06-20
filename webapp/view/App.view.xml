@@ -1,0 +1,4 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="emc2.hr.payroll.controller.App">
+    <!-- Add the container control -->
+    <SplitApp id="idAppCon"></SplitApp>
+</mvc:View>

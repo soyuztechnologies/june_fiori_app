@@ -1,0 +1,40 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core"
+ xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+controllerName="emc2.hr.payroll.controller.Supplier">
+    <Page showNavButton="true" navButtonPress="onBack" title="Supplier Details 🤣">
+        <ObjectHeader icon="sap-icon://supplier" title="{name}" intro="{sinceWhen} {city}"
+        number="{contactNo}" numberUnit="{contactPerson}"></ObjectHeader>
+        <Select id="chartType" selectedKey="{/chartType}">
+            <items>
+                <core:Item key="donut" text="Donut"></core:Item>
+                <core:Item key="line" text="Line"></core:Item>
+                <core:Item key="column" text="Column"></core:Item>
+                
+            </items>
+        </Select>
+        <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
+                height='100%' width="100%" vizType='{/chartType}'>
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{orders}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="Fruit Name"
+                                value="{name}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="Quantity"
+                                value="{qty}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem uid="size" type="Measure"
+                        values="Quantity" />
+                    <viz.feeds:FeedItem uid="color" type="Dimension"
+                        values="Fruit Name" />
+                </viz:feeds>
+            </viz:VizFrame>
+    </Page>
+</mvc:View>
